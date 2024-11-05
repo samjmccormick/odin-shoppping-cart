@@ -1,4 +1,6 @@
-async function getProducts({ quantity }) {
+let products = [];
+
+async function getProducts(quantity) {
   const url = `https://fakestoreapi.com/products?limit=${quantity}`;
 
   try {
@@ -6,9 +8,9 @@ async function getProducts({ quantity }) {
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-    const json = await response.json();
-    console.log(json);
-    return json;
+    const json = response.json();
+    products = json;
+    return products;
   } catch (error) {
     console.error(error.message);
   }

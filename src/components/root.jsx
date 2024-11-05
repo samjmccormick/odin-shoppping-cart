@@ -4,7 +4,9 @@ import getProducts from "../products";
 import { Button } from "react-bootstrap";
 
 function Root() {
-  const [productsList, setProductsList] = useState(getProducts(5));
+  const test = [{ title: "testing", description: "testing" }];
+
+  const [productsList, setProductsList] = useState(test);
 
   function handleLoadMoreClick() {
     setProductsList((previous) => getProducts(previous.length + 5));
