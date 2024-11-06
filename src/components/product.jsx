@@ -1,4 +1,9 @@
-import { Card } from "react-bootstrap";
+import {
+  Card,
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "react-bootstrap";
 import PropTypes from "prop-types";
 
 function ProductCard({
@@ -15,13 +20,24 @@ function ProductCard({
   }
 
   return (
-    <Card bg="dark" border="dark" text="white" onClick={handleClick}>
-      <Card.Img variant="top" src={imgSource} />
+    <Card
+      bg="dark"
+      border="dark"
+      text="white"
+      onClick={handleClick}
+      style={{ width: "18rem" }}
+    >
+      <Card.Img variant="top" src={imgSource} style={{ height: "18rem" }} />
       <Card.Body>
         <Card.Title>{productTitle}</Card.Title>
         <Card.Subtitle>{productType}</Card.Subtitle>
-        <Card.Text>{productDescription}</Card.Text>
-        <Card.Text>{price}</Card.Text>
+        <Accordion data-bs-theme="dark">
+          <AccordionHeader>Product Description</AccordionHeader>
+          <AccordionBody>{productDescription}</AccordionBody>
+        </Accordion>
+        <Card.Text>
+          <b>Price:</b> ${price}
+        </Card.Text>
       </Card.Body>
     </Card>
   );

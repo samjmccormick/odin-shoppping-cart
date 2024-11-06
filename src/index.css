@@ -1,3 +1,32 @@
-body {
+#root {
   background-color: rgb(71, 70, 70);
+  height: 100%;
+}
+
+.card {
+  margin-bottom: 15px;
+}
+
+.nav-item {
+  font-size: larger;
+}
+
+.navbar {
+  z-index: 10;
+  width: 100%;
+  background-color: rgb(71, 70, 70);
+}
+
+.cart-item {
+  color: white;
+  background-color: rgb(33, 37, 41);
+  margin-bottom: 10px;
+  align-items: center;
+  padding-left: 0 !important;
+  border-radius: 10px;
+}
+
+.cart-image {
+  padding-left: 0 !important;
+  width: 18rem !important;
 }

@@ -6,6 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Root className="body" />
+    <Root />
   </StrictMode>
 );
