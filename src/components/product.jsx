@@ -3,6 +3,7 @@ import {
   Accordion,
   AccordionHeader,
   AccordionBody,
+  Button,
 } from "react-bootstrap";
 import PropTypes from "prop-types";
 
@@ -20,13 +21,7 @@ function ProductCard({
   }
 
   return (
-    <Card
-      bg="dark"
-      border="dark"
-      text="white"
-      onClick={handleClick}
-      style={{ width: "18rem" }}
-    >
+    <Card bg="dark" border="dark" text="white" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={imgSource} style={{ height: "18rem" }} />
       <Card.Body>
         <Card.Title>{productTitle}</Card.Title>
@@ -38,6 +33,9 @@ function ProductCard({
         <Card.Text>
           <b>Price:</b> ${price}
         </Card.Text>
+        <Button variant="secondary" type="button" onClick={handleClick}>
+          Add to Cart
+        </Button>
       </Card.Body>
     </Card>
   );

@@ -7,7 +7,16 @@ import ShoppingCart from "./shoppingcart";
 function Root() {
   const [productsList, setProductsList] = useState([]);
   const [productNumber, setProductNumber] = useState(6);
+  const [cart, setCart] = useState([]);
 
+  function handleAddCartClick(id) {
+    setCart((previousState) => [
+      ...previousState,
+      productsList.find((product) => product.id === id),
+    ]);
+  }
+
+  console.log(cart);
   async function getProducts(quantity) {
     const url = `https://fakestoreapi.com/products?limit=${quantity}`;
 
@@ -17,7 +26,6 @@ function Root() {
         throw new Error(`Response status: ${response.status}`);
       }
       const json = await response.json();
-      console.log(json);
       setProductsList(json);
     } catch (error) {
       console.error(error.message);
@@ -34,20 +42,19 @@ function Root() {
 
   return (
     <>
-      <NavBar />
+      <NavBar cartCount={cart.length} />
 
-      {/* <ProductGrid products={productsList} />
-          <Container className="d-flex justify-content-center">
-            <Button
-              variant="secondary"
-              type="button"
-              onClick={handleLoadMoreClick}
-            >
-              Load More...
-            </Button>
-          </Container>{" "}
-       */}
-      <ShoppingCart cartItems={productsList} quantity={5} />
+      <ProductGrid
+        products={productsList}
+        handleAddCartClick={handleAddCartClick}
+      />
+      <Container className="d-flex justify-content-center">
+        <Button variant="secondary" type="button" onClick={handleLoadMoreClick}>
+          Load More...
+        </Button>
+      </Container>
+
+      {/* <ShoppingCart cartItems={cart} /> */}
     </>
   );
 }

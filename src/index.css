@@ -9,6 +9,22 @@
 
 .nav-item {
   font-size: larger;
+  display: flex;
+}
+
+.cart-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(132, 132, 132);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.nav-link {
+  display: flex !important;
 }
 
 .navbar {
@@ -28,5 +44,10 @@
 
 .cart-image {
   padding-left: 0 !important;
-  width: 18rem !important;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

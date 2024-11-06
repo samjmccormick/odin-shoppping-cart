@@ -13,8 +13,9 @@ function NavBar({ cartCount, shopClick, cartClick }) {
           <Nav.Link onClick={shopClick}>Shop</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link onClick={cartClick}>Cart</Nav.Link>
-          <span>{cartCount}</span>
+          <Nav.Link onClick={cartClick}>
+            Cart<div className="cart-count">{cartCount}</div>
+          </Nav.Link>
         </Nav.Item>
       </Nav>
     </Navbar>

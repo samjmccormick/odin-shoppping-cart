@@ -3,9 +3,6 @@ import CartItem from "./cartitem";
 import PropTypes from "prop-types";
 
 function ShoppingCart({ cartItems }) {
-  const [quantity, setQuantity] = useState([]);
-  for (let i = 0; i < cartItems.length; i++) {}
-
   return (
     <Container>
       <Row lg={1}>

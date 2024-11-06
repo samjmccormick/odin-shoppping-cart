@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import ProductCard from "./product";
 import PropTypes from "prop-types";
 
-function ProductGrid({ products }) {
+function ProductGrid({ products, handleAddCartClick }) {
   return (
     <Container>
       <Row lg={3} md={2} sm={1}>
@@ -16,7 +16,7 @@ function ProductGrid({ products }) {
               productType={card.type}
               price={card.price}
               id={card.id}
-              //onClick={handleCardClick}
+              onClick={handleAddCartClick}
             />
           </Col>
         ))}
@@ -27,6 +27,9 @@ function ProductGrid({ products }) {
 
 ProductGrid.propTypes = {
   products: PropTypes.array,
+  cartArray: PropTypes.array,
+  cartCount: PropTypes.func,
+  handleAddCartClick: PropTypes.func,
 };
 
 export default ProductGrid;
