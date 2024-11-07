@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ProductGrid from "./productgrid";
-import { Button, Container } from "react-bootstrap";
 import NavBar from "./navbar";
 import ShoppingCart from "./shoppingcart";
 
@@ -8,6 +7,7 @@ function Root() {
   const [productsList, setProductsList] = useState([]);
   const [productNumber, setProductNumber] = useState(6);
   const [cart, setCart] = useState([]);
+  const [shopActive, setShopActive] = useState(true);
 
   function handleAddCartClick(id) {
     setCart((previousState) => [
@@ -16,7 +16,6 @@ function Root() {
     ]);
   }
 
-  console.log(cart);
   async function getProducts(quantity) {
     const url = `https://fakestoreapi.com/products?limit=${quantity}`;
 
@@ -40,21 +39,44 @@ function Root() {
     setProductNumber((previous) => previous + 3);
   }
 
+  function handleCartClick() {
+    if (cart.length > 0) {
+      setShopActive(false);
+    } else {
+      alert("Your cart is empty");
+    }
+  }
+
+  function handleRemove(id) {
+    console.log(id);
+    let cartTemp = [...cart];
+    cartTemp.splice(
+      cartTemp.findIndex((item) => item.id === id),
+      1
+    );
+    setCart(cartTemp);
+  }
+
+  console.log(cart);
+
   return (
     <>
-      <NavBar cartCount={cart.length} />
-
-      <ProductGrid
-        products={productsList}
-        handleAddCartClick={handleAddCartClick}
+      <NavBar
+        cartCount={cart.length}
+        shopClick={() => setShopActive(true)}
+        cartClick={handleCartClick}
       />
-      <Container className="d-flex justify-content-center">
-        <Button variant="secondary" type="button" onClick={handleLoadMoreClick}>
-          Load More...
-        </Button>
-      </Container>
 
-      {/* <ShoppingCart cartItems={cart} /> */}
+      {shopActive && (
+        <ProductGrid
+          products={productsList}
+          handleAddCartClick={handleAddCartClick}
+          handleLoadMoreClick={handleLoadMoreClick}
+        />
+      )}
+      {!shopActive && (
+        <ShoppingCart cartItems={cart} handleRemove={handleRemove} />
+      )}
     </>
   );
 }
