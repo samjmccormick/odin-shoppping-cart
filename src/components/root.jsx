@@ -55,6 +55,9 @@ function Root() {
       1
     );
     setCart(cartTemp);
+    if (cartTemp.length === 0) {
+      setShopActive(true);
+    }
   }
 
   console.log(cart);

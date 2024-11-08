@@ -8,7 +8,7 @@ function ProductGrid({ products, handleAddCartClick, handleLoadMoreClick }) {
       <Container>
         <Row lg={3} md={2} sm={1}>
           {products.map((card, index) => (
-            <Col key={index} className="d-flex justify-content-center">
+            <Col key={index} className="justify-content-center">
               <ProductCard
                 key={card.id}
                 imgSource={card.image}
