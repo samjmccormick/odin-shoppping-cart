@@ -1,6 +1,5 @@
-import * as React from "react";
 import { render, screen } from "@testing-library/react";
-import Root from "../components/root";
+import Root from "../src/components/root";
 import { describe, it } from "vitest";
 
 describe("Root component", () => {
