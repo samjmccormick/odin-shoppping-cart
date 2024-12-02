@@ -4,6 +4,10 @@ import {
   AccordionHeader,
   AccordionBody,
   Button,
+  InputGroup,
+  FormControl,
+  Row,
+  Col,
 } from "react-bootstrap";
 import PropTypes from "prop-types";
 
@@ -13,11 +17,22 @@ function ProductCard({
   productDescription,
   productType,
   price,
-  onClick,
+  addCart,
   id,
+  stepUp,
+  stepDown,
+  quantity,
 }) {
   function handleClick() {
-    onClick(id);
+    addCart(id);
+  }
+
+  function handleStepUp() {
+    stepUp(id);
+  }
+
+  function handleStepDown() {
+    stepDown(id);
   }
 
   return (
@@ -33,9 +48,39 @@ function ProductCard({
         <Card.Text>
           <b>Price:</b> ${price}
         </Card.Text>
-        <Button variant="secondary" type="button" onClick={handleClick}>
-          Add to Cart
-        </Button>
+        <Row>
+          <Col>
+            <Button variant="secondary" type="button" onClick={handleClick}>
+              Add to Cart
+            </Button>
+          </Col>
+          <Col>
+            <InputGroup>
+              <Button
+                variant="outline-secondary"
+                id="button-addon1"
+                type="button"
+                onClick={handleStepUp}
+              >
+                +
+              </Button>
+              <FormControl
+                type="number"
+                value={quantity}
+                className="quantity"
+                defaultValue={0}
+              />
+              <Button
+                variant="outline-secondary"
+                id="button-addon2"
+                type="button"
+                onClick={handleStepDown}
+              >
+                -
+              </Button>
+            </InputGroup>
+          </Col>
+        </Row>
       </Card.Body>
     </Card>
   );
@@ -46,9 +91,12 @@ ProductCard.propTypes = {
   productDescription: PropTypes.string,
   productTitle: PropTypes.string,
   productType: PropTypes.string,
-  onClick: PropTypes.func,
+  addCart: PropTypes.func,
   price: PropTypes.number,
   id: PropTypes.number,
+  stepUp: PropTypes.func,
+  stepDown: PropTypes.func,
+  quantity: PropTypes.number,
 };
 
 export default ProductCard;

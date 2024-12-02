@@ -24,7 +24,7 @@ function ShoppingCart({ cartItems, handleRemove }) {
                 imgSource={item.image}
                 productTitle={item.title}
                 price={item.price}
-                quantity={counts[item.id]}
+                quantity={item.quantity}
               />
 
               <Col xs="auto" className="mb-2">

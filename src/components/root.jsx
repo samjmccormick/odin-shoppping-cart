@@ -9,12 +9,41 @@ function Root() {
   const [cart, setCart] = useState([]);
   const [shopActive, setShopActive] = useState(true);
 
-  function handleAddCartClick(id) {
-    setCart((previousState) => [
-      ...previousState,
-      productsList.find((product) => product.id === id),
-    ]);
+  function handleStepUp(id) {
+    let product = productsList.find((pr) => pr.id === id);
+    if (!product.quantity) {
+      product.quantity = 1;
+    } else {
+      product.quantity += 1;
+    }
+    const updatedProducts = productsList.map((pr) => {
+      if (product.id === pr.id) return product;
+      return pr;
+    });
+    setProductsList(updatedProducts);
   }
+
+  function handleStepDown(id) {
+    let product = productsList.find((pr) => pr.id === id);
+    if (!product.quantity) {
+      product.quantity = 0;
+    } else {
+      product.quantity -= 1;
+    }
+    const updatedProducts = productsList.map((pr) => {
+      if (product.id === pr.id) return product;
+      return pr;
+    });
+    setProductsList(updatedProducts);
+  }
+
+  function handleAddCartClick(id) {
+   if (cart.length === 0) {setCart([productsList.find((pr) => pr.id === id)]) 
+  }
+
+  // to implement a quantity system that allows for adding more than one individual product at a time, my thought is to check if the item is already in the cart, if not just add it and include quantity as a new property
+  // update, I think I'm going to add quantity as a property to the products list since that's already getting mapped to the product grid. Done!
+  // if the product is already in the cart then just add the quantities together
 
   async function getProducts(quantity) {
     const url = `https://fakestoreapi.com/products?limit=${quantity}`;
@@ -60,8 +89,6 @@ function Root() {
     }
   }
 
-  console.log(cart);
-
   return (
     <>
       <NavBar
@@ -75,6 +102,8 @@ function Root() {
           products={productsList}
           handleAddCartClick={handleAddCartClick}
           handleLoadMoreClick={handleLoadMoreClick}
+          stepUp={handleStepUp}
+          stepDown={handleStepDown}
         />
       )}
       {!shopActive && (
