@@ -38,7 +38,9 @@ function Root() {
   }
 
   function handleAddCartClick(id) {
-   if (cart.length === 0) {setCart([productsList.find((pr) => pr.id === id)]) 
+    if (cart.length === 0) {
+      setCart([productsList.find((pr) => pr.id === id)]);
+    }
   }
 
   // to implement a quantity system that allows for adding more than one individual product at a time, my thought is to check if the item is already in the cart, if not just add it and include quantity as a new property
