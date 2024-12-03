@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Root from "../src/components/root";
+import Root from "./root";
 import { describe, it } from "vitest";
 
 describe("Root component", () => {
