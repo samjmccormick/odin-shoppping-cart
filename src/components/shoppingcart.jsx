@@ -3,13 +3,6 @@ import CartItem from "./cartitem";
 import PropTypes from "prop-types";
 
 function ShoppingCart({ cartItems, handleRemove }) {
-  let counts = {};
-  cartItems.forEach(function (item) {
-    counts[item.id] = (counts[item.id] || 0) + 1;
-  });
-
-  let cart = [...new Set(cartItems)];
-
   let totalCost = 0;
   cartItems.map((item) => (totalCost = totalCost + Number(item.price)));
 
@@ -17,7 +10,7 @@ function ShoppingCart({ cartItems, handleRemove }) {
     <>
       <Container>
         <Row lg={1}>
-          {cart.map((item, index) => (
+          {cartItems.map((item, index) => (
             <>
               <CartItem
                 key={item.id}
@@ -27,9 +20,8 @@ function ShoppingCart({ cartItems, handleRemove }) {
                 quantity={item.quantity}
               />
 
-              <Col xs="auto" className="mb-2">
+              <Col xs="auto" className="mb-2" key={index}>
                 <Button
-                  key={index}
                   type="button"
                   variant="danger"
                   onClick={() => handleRemove(item.id)}

@@ -24,7 +24,7 @@ function ProductGrid({
                 price={card.price}
                 id={card.id}
                 addCart={handleAddCartClick}
-                quantity={card.quantity}
+                quantity={!card.quantity ? 0 : card.quantity}
                 stepDown={stepDown}
                 stepUp={stepUp}
               />

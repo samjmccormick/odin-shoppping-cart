@@ -38,14 +38,18 @@ function Root() {
   }
 
   function handleAddCartClick(id) {
-    if (cart.length === 0) {
-      setCart([productsList.find((pr) => pr.id === id)]);
-    }
+    let cartHolder = [...cart];
+    const productIndex = productsList.findIndex((pr) => pr.id === id);
+    const cartItemIndex = cartHolder.findIndex((pr) => pr.id === id);
+    /* if (!productsList[productIndex].quantity) {
+      alert("You must choose a quantity greater than 0 to add to cart");
+    } else  */ if (cartItemIndex === -1) {
+      cartHolder = [...cartHolder, productsList[productIndex]];
+    } /* else {
+      cartHolder[cartItemIndex].quantity += productsList[productIndex].quantity;
+    } */
+    setCart(cartHolder);
   }
-
-  // to implement a quantity system that allows for adding more than one individual product at a time, my thought is to check if the item is already in the cart, if not just add it and include quantity as a new property
-  // update, I think I'm going to add quantity as a property to the products list since that's already getting mapped to the product grid. Done!
-  // if the product is already in the cart then just add the quantities together
 
   async function getProducts(quantity) {
     const url = `https://fakestoreapi.com/products?limit=${quantity}`;
@@ -66,6 +70,11 @@ function Root() {
     getProducts(productNumber);
   }, [productNumber]);
 
+  useEffect(() => {
+    console.log(productsList);
+    console.log(cart);
+  });
+
   function handleLoadMoreClick() {
     setProductNumber((previous) => previous + 3);
   }
@@ -79,7 +88,6 @@ function Root() {
   }
 
   function handleRemove(id) {
-    console.log(id);
     let cartTemp = [...cart];
     cartTemp.splice(
       cartTemp.findIndex((item) => item.id === id),

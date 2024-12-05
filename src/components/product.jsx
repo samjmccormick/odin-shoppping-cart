@@ -68,7 +68,7 @@ function ProductCard({
                 type="number"
                 value={quantity}
                 className="quantity"
-                defaultValue={0}
+                readOnly
               />
               <Button
                 variant="outline-secondary"
