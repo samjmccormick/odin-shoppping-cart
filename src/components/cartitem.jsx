@@ -1,7 +1,29 @@
-import { Row, Col, Image } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Image,
+  InputGroup,
+  FormControl,
+  Button,
+} from "react-bootstrap";
 import PropTypes from "prop-types";
 
-function CartItem({ imgSource, productTitle, price, quantity }) {
+function CartItem({
+  imgSource,
+  productTitle,
+  price,
+  quantity,
+  stepDown,
+  stepUp,
+  id,
+}) {
+  function handleStepUp() {
+    stepUp(id);
+  }
+
+  function handleStepDown() {
+    stepDown(id);
+  }
   return (
     <Row className="cart-item " data-bs-theme="dark">
       <Col className="cart-image" md="auto">
@@ -15,8 +37,7 @@ function CartItem({ imgSource, productTitle, price, quantity }) {
         <div>Price: ${price}</div>
       </Col>
       <Col xs="auto">
-        {" "}
-        <InputGroup>
+        <InputGroup id="cart-quantity">
           <Button
             variant="outline-secondary"
             id="button-addon1"
@@ -50,6 +71,9 @@ CartItem.propTypes = {
   productTitle: PropTypes.string,
   price: PropTypes.number,
   quantity: PropTypes.number,
+  id: PropTypes.number,
+  stepUp: PropTypes.func,
+  stepDown: PropTypes.func,
 };
 
 export default CartItem;
