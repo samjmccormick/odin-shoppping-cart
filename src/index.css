@@ -69,3 +69,7 @@ body {
 .quantity {
   text-align: center;
 }
+
+#cart-quantity {
+  max-width: 120px !important;
+}
