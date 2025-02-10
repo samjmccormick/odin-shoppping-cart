@@ -9,34 +9,6 @@ function Root() {
   const [cart, setCart] = useState([]);
   const [shopActive, setShopActive] = useState(true);
 
-  /*   function handleStepUp(id) {
-    let product = productsList.find((pr) => pr.id === id);
-    if (!product.quantity) {
-      product.quantity = 1;
-    } else {
-      product.quantity += 1;
-    }
-    const updatedProducts = productsList.map((pr) => {
-      if (product.id === pr.id) return product;
-      return pr;
-    });
-    setProductsList(updatedProducts);
-  }
-
-  function handleStepDown(id) {
-    let product = productsList.find((pr) => pr.id === id);
-    if (!product.quantity) {
-      product.quantity = 0;
-    } else {
-      product.quantity -= 1;
-    }
-    const updatedProducts = productsList.map((pr) => {
-      if (product.id === pr.id) return product;
-      return pr;
-    });
-    setProductsList(updatedProducts);
-  } */
-
   function handleAddCartClick(id) {
     let cartHolder = [...cart];
     const productIndex = productsList.findIndex((pr) => pr.id === id);
@@ -112,8 +84,6 @@ function Root() {
           products={productsList}
           handleAddCartClick={handleAddCartClick}
           handleLoadMoreClick={handleLoadMoreClick}
-          /* stepUp={handleStepUp}
-          stepDown={handleStepDown} */
         />
       )}
       {!shopActive && (

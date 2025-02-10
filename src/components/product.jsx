@@ -4,8 +4,6 @@ import {
   AccordionHeader,
   AccordionBody,
   Button,
-  InputGroup,
-  FormControl,
   Row,
   Col,
 } from "react-bootstrap";
@@ -19,20 +17,9 @@ function ProductCard({
   price,
   addCart,
   id,
-  stepUp,
-  stepDown,
-  quantity,
 }) {
   function handleClick() {
     addCart(id);
-  }
-
-  function handleStepUp() {
-    stepUp(id);
-  }
-
-  function handleStepDown() {
-    stepDown(id);
   }
 
   return (
@@ -53,32 +40,6 @@ function ProductCard({
             <Button variant="secondary" type="button" onClick={handleClick}>
               Add to Cart
             </Button>
-          </Col>
-          <Col>
-            <InputGroup>
-              <Button
-                variant="outline-secondary"
-                id="button-addon1"
-                type="button"
-                onClick={handleStepUp}
-              >
-                +
-              </Button>
-              <FormControl
-                type="number"
-                value={quantity}
-                className="quantity"
-                readOnly
-              />
-              <Button
-                variant="outline-secondary"
-                id="button-addon2"
-                type="button"
-                onClick={handleStepDown}
-              >
-                -
-              </Button>
-            </InputGroup>
           </Col>
         </Row>
       </Card.Body>

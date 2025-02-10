@@ -1,4 +1,11 @@
-import { Row, Col, Image } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Image,
+  InputGroup,
+  Button,
+  FormControl,
+} from "react-bootstrap";
 import PropTypes from "prop-types";
 
 function CartItem({ imgSource, productTitle, price, quantity }) {
@@ -15,7 +22,6 @@ function CartItem({ imgSource, productTitle, price, quantity }) {
         <div>Price: ${price}</div>
       </Col>
       <Col xs="auto">
-        {" "}
         <InputGroup>
           <Button
             variant="outline-secondary"
