@@ -9,7 +9,7 @@ function Root() {
   const [cart, setCart] = useState([]);
   const [shopActive, setShopActive] = useState(true);
 
-  function handleStepUp(id) {
+  /*   function handleStepUp(id) {
     let product = productsList.find((pr) => pr.id === id);
     if (!product.quantity) {
       product.quantity = 1;
@@ -35,7 +35,7 @@ function Root() {
       return pr;
     });
     setProductsList(updatedProducts);
-  }
+  } */
 
   function handleAddCartClick(id) {
     let cartHolder = [...cart];
@@ -112,8 +112,8 @@ function Root() {
           products={productsList}
           handleAddCartClick={handleAddCartClick}
           handleLoadMoreClick={handleLoadMoreClick}
-          stepUp={handleStepUp}
-          stepDown={handleStepDown}
+          /* stepUp={handleStepUp}
+          stepDown={handleStepDown} */
         />
       )}
       {!shopActive && (

@@ -14,7 +14,33 @@ function CartItem({ imgSource, productTitle, price, quantity }) {
         <h1>{productTitle}</h1>
         <div>Price: ${price}</div>
       </Col>
-      <Col xs="auto">Qty: {quantity}</Col>
+      <Col xs="auto">
+        {" "}
+        <InputGroup>
+          <Button
+            variant="outline-secondary"
+            id="button-addon1"
+            type="button"
+            onClick={handleStepUp}
+          >
+            +
+          </Button>
+          <FormControl
+            type="number"
+            value={quantity}
+            className="quantity"
+            readOnly
+          />
+          <Button
+            variant="outline-secondary"
+            id="button-addon2"
+            type="button"
+            onClick={handleStepDown}
+          >
+            -
+          </Button>
+        </InputGroup>
+      </Col>
     </Row>
   );
 }
