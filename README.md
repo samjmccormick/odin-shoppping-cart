@@ -12,6 +12,5 @@ A dynamic storefront web application that retrieves products from the [FakeStore
 
 ## Tech Stack
 
-- **Frontend**: React, Bootstrap
-- **Backend**: Node.js, Express (if needed for additional functionality)
+- **Frontend**: React, React-Bootstrap, CSS 
 - **API**: FakeStoreAPI
